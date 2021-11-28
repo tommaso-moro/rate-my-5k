@@ -13,10 +13,10 @@ from streamlit_echarts import st_echarts #https://share.streamlit.io/andfanilo/s
 
 ## CONNECT TO MONGO ##
 def get_mongo_collection():
-    mongo_server_url = os.getenv(**st.secrets["MONGO_URI"])
+    mongo_server_url = st.secrets["MONGO_URI"]
     client = pymongo.MongoClient(mongo_server_url) 
-    db_name = os.getenv(**st.secrets["DB_NAME"])
-    col_name = os.getenv(**st.secrets["COLLECTION_NAME"])
+    db_name = st.secrets["DB_NAME"]
+    col_name = st.secrets["COLLECTION_NAME"]
     mongo_col = client.get_database(db_name)[col_name]
     return mongo_col
 
