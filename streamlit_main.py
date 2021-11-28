@@ -15,7 +15,9 @@ from streamlit_echarts import st_echarts #https://share.streamlit.io/andfanilo/s
 def get_mongo_collection():
     mongo_server_url = os.getenv('MONGO_URI')
     client = pymongo.MongoClient(mongo_server_url) 
-    mongo_col = client.get_database("running_observatory_db")["races_data"]
+    db_name = os.getenv('DB_NAME')
+    col_name = os.getenv('COLLECTION_NAME')
+    mongo_col = client.get_database(db_name)[col_name]
     return mongo_col
 
 # get time in seconds (e.g. 20:15 is 1215 seconds)
