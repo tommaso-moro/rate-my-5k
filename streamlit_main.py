@@ -18,6 +18,14 @@ def get_mongo_collection():
     db_name = st.secrets["DB_NAME"]
     col_name = st.secrets["COLLECTION_NAME"]
     mongo_col = client.get_database(db_name)[col_name]
+    """
+    if using os.getenv locally:
+        mongo_server_url = os.getenv('MONGO_URI')
+        client = pymongo.MongoClient(mongo_server_url) 
+        db_name = os.getenv('DB_NAME')
+        col_name = os.getenv('COLLECTION_NAME')
+        mongo_col = client.get_database("db_name")["col_name"]
+    """
     return mongo_col
 
 # get time in seconds (e.g. 20:15 is 1215 seconds)
